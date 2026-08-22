@@ -1,0 +1,121 @@
+Puppeteer ke dependencies
+‎RUN apt-get update && apt-get install -y \
+‎    chromium \
+‎    fonts-liberation \
+‎    libasound2 \
+‎    libatk-bridge2.0-0 \
+‎    libatk1.0-0 \
+‎    libcups2 \
+‎    libdbus-1-3 \
+‎    libxkbcommon0 \
+‎    libxcomposite1 \
+‎    libxdamage1 \
+‎    libxfixes3 \
+‎    libxrandr2 \
+‎    libgbm1 \
+‎    libgtk-3-0 \
+‎    && rm -rf /var/lib/apt/lists/*
+‎
+‎WORKDIR /app
+‎COPY package*.json ./
+‎RUN npm install
+‎
+‎COPY . .
+‎EXPOSE 3000
+‎CMD ["npm", "start"]
+‎FILE NAME: backend/.env Railway me add karo
+‎PORT=3000
+‎WHATSAPP_TOKEN=PASTE_YOUR_TOKEN
+‎PHONE_NUMBER_ID=PASTE_YOUR_ID
+‎DEPLOY STEPS:
+1. ‎GitHub pe push karo
+2. ‎Railway.app > New Project > Deploy from GitHub
+3. ‎Root Directory: backend select karo
+4. ‎Variables me .env wale add karo
+5. ‎Done. URL mil jayega: https://your-app.up.railway.app
+‎
+‎---
+‎
+‎2. BROADCAST 5000 MSGS KA CODE - backend/broadcast.js
+‎WhatsApp 24-hour rule + rate limit ka khayal rakha hai
+‎
+‎FILE NAME: backend/broadcast.js
+‎const axios = require('axios');
+‎
+‎const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN;
+‎const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
+‎
+‎// 20 msg/sec ki speed. WhatsApp limit 1000/min
+‎const DELAY_MS = 50; 
+‎
+‎const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+‎
+‎async function sendBroadcast(phoneNumbers, message) {
+‎  let sent = 0;
+‎  let failed = 0;
+‎
+‎  for (const number of phoneNumbers) {
+‎    try {
+‎      await axios.post(
+‎        https://graph.facebook.com/v20.0/${PHONE_NUMBER_ID}/messages,
+‎        {
+‎          messaging_product: "whatsapp",
+‎          to: number,
+‎          type: "text",
+‎          text: { body: message }
+‎        },
+‎        { headers: { 'Authorization': Bearer ${WHATSAPP_TOKEN} } }
+‎      );
+‎      sent++;
+‎      console.log(Sent to ${number});
+‎    } catch (err) {
+‎      failed++;
+‎      console.log(Failed ${number}:, err.response?.data?.error?.message);
+‎    }
+‎
+‎    await sleep(DELAY_MS); // Rate limit avoid
+‎  }
+‎
+‎  return { sent, failed };
+‎}
+‎
+‎// API ROUTE
+‎const express = require('express');
+‎const app = express();
+‎app.use(express.json());
+‎
+‎app.post('/broadcast', async (req, res) => {
+‎  const { phoneNumbers, message } = req.body;
+‎
+‎  if(!phoneNumbers || phoneNumbers.length > 5000) {
+‎    return res.status(400).json({ error: 'Max 5000 numbers allowed' });
+‎  }
+‎
+‎  // Background me chalao taake API hang na ho
+‎  sendBroadcast(phoneNumbers, message);
+‎
+‎  res.json({ status: "Broadcast started", total: phoneNumbers.length });
+‎});
+‎
+‎module.exports = { sendBroadcast };
+‎TEST KARNE KE LIYE:
+‎POST https://your-app.up.railway.app/broadcast
+‎{
+‎  "phoneNumbers": ["923001234567", "923011234567"],
+‎  "message": "Assalamualaikum! GBOB ki nayi sale 30% OFF 🔥 Shop now: yourlink.com"
+‎}
+‎
+‎IMPORTANT RULES WHATSAPP KE
+1. ‎Template Message: Agar 24 hours se baat nahi hui to pehle approved template bhejna parega
+2. ‎Opt-in: Sirf unhi ko bhejo jinhone permission di ho
+3. ‎Rate Limit: 1000 msg/min. Isliye 50ms delay rakha
+‎
+‎UPDATE backend/package.json
+‎"dependencies": {
+‎  "express": "^4.18.2",
+‎  "puppeteer": "^21.7.0",
+‎  "cors": "^2.8.5",
+‎  "dotenv": "^16.3.1",
+‎  "axios": "^1.6.0",
+‎  "form-data": "^4.0.0"
+‎}
