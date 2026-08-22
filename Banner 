@@ -1,0 +1,39 @@
+lo ji *Logo + Banner* dono ready 🔥
+
+### *1. LOGO CONCEPT*
+- *Icon*: WhatsApp chat bubble + ⚙️ gear + 🧾 invoice
+- *Colors*: WhatsApp Green `#25D366` + Black `#000000` + White
+- *Font*: Poppins Bold - clean aur tech wali feel
+- *Use*: GitHub repo icon, dashboard favicon, invoices pe
+
+### *2. GITHUB BANNER - 1280x640*
+Uppar image generate ho gayi hai. Isko repo ke top pe laga do.
+
+*Banner pe Text:*
+GBOB WhatsApp Business Toolkit
+Auto Reply • Catalog • Invoice • Broadcast
+Built for Pakistani SMEs
+---
+
+### *3. KAHAN KAHAN LAGANA HAI*
+Jaga	Size	File Name
+GitHub Social Preview	1280x640	`banner.png`
+README Header	800x400	`banner-small.png`
+Logo	512x512	`logo.png`
+Favicon	32x32	`favicon.ico`
+### *4. README ME KAISE LAGAYE*
+README ke sab se upar ye add kar do:
+![GBOB Banner](banner.png)
+
+<p align="center">
+  <img src="logo.png" width="120" />
+</p>
+---
+
+### *DOWNLOAD KARNE KE BAAD*
+1. Image ko `logo.png` aur `banner.png` name se `/frontend/public` folder me dalo
+2. GitHub repo Settings > Social preview me banner upload karo
+
+Aapko *favicon* bhi bana dun ya *Product Mockup Image* chahiye jisme mobile pe dashboard dikhe?
+
+Konsa wala abhi banaun 👇
