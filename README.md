@@ -1,11 +1,9 @@
 # gbob-whatsapp-business-toolkit
-REPO DESCRIPTION - 1 Line ‎Complete WhatsApp Business SaaS: Auto-Reply Bot + Catalog + Invoice + Broadcast. Built for Pakistani SMEs with Next.js + Node.js ‎
-bas ye wala copy-paste kar do 👇  
-me ne thora clean kar ke format theek kar diya hai
+ WhatsApp Business SaaS: Auto-Reply Bot + Catalog + Invoice + Broadcast. Built for Pakistani SMEs with Next.js + Node.js ‎
 
 
-### *2. REPO DESCRIPTION*
-`Complete WhatsApp Business SaaS: Auto-Reply Bot + Catalog + Invoice + Broadcast. Built for Pakistani SMEs with Next.js + Node.js`
+
+ WhatsApp Business SaaS: Auto-Reply Bot + Catalog + Invoice + Broadcast. Built for Pakistani SMEs with Next.js + Node.js`
 
 ### *3. README.md - FINAL VERSION*
 # GBOB WhatsApp Business Toolkit 🚀
