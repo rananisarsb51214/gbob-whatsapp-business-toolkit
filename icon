@@ -1,0 +1,35 @@
+lo ji *Icon ready* ✅
+
+Upar 512x512 wala square icon generate ho gaya hai
+
+### *ICON KO KAHAN USE KARNA HAI*
+
+#### *1. FAVICON - Website tab me*
+1. Icon ko download karke `favicon.ico` me convert karo: https://favicon.io
+2. File ko dalo: `/frontend/public/favicon.ico`
+3. `layout.tsx` me ye add karo:
+export const metadata = {
+  icons: {
+    icon: '/favicon.ico',
+  },
+}
+#### *2. GITHUB REPO LOGO*
+Repo Settings > General > Social preview > Upload `logo.png`
+
+#### *3. DASHBOARD NAVBAR*
+Next.js me top left pe:
+<img src="/logo.png" alt="GBOB" className="w-10 h-10" />
+<span className="font-bold">GBOB Toolkit</span>
+---
+
+### *FILE STRUCTURE FINAL*
+/frontend/public/
+  ├── logo.png      <- 512x512 wala icon
+  ├── banner.png    <- 1280x640 banner
+  └── favicon.ico   <- 32x32 tab icon
+### *GIT PUSH*
+git add .
+git commit -m "Add logo, banner and favicon"
+git push
+---
+
