@@ -1,0 +1,12 @@
+gbob-toolkit/
+├── README.md, DEPLOY.md, .gitignore
+├── prisma/schema.prisma          ← shared Order model
+├── backend/                       ← Node/Express
+│   ├── invoice.js                 (main server: /generate-invoice, /send-invoice, /broadcast, /send-template)
+│   ├── whatsapp.js, broadcast.js, template.js, analytics.js
+├── frontend/                      ← Next.js 14
+│   ├── app/broadcast/page.tsx     (fixed a JSX syntax bug from the pasted snippet)
+│   ├── app/api/stripe/webhook/route.ts
+└── telegram-bot/                  ← Python
+    ├── main.py (python-telegram-bot, long polling)
+    └── core/bot_logic.py (Stripe checkout + Postgres order flow)
